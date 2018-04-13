@@ -85,3 +85,50 @@ function WelcomeDialog() {
   );
 }
 ```
+
+# Specialization
+```javascript
+function Dialog(props) {
+  return (
+    <FancyBorder color="blue">
+      <h1 className="Dialog-title">
+        {props.title}
+      </h1>
+      <p className="Dialog-message">
+        {props.message}
+      </p>
+    </FancyBorder>
+  );
+}
+
+function WelcomeDialog() {
+  return (
+    <Dialog
+      title="Welcome"
+      message="Thank you for visiting our spacecraft!" />
+  );
+}
+```
+
+# JSX in Depth
+* JavaScript Expressions as Children, You can pass any JavaScript expression as children, by enclosing it within {}
+```javascript
+<MyComponent>{'foo'}</MyComponent>
+```
+* props children can be a function
+* Booleans, Null, and Undefined Are Ignored: false, null, undefined,(0 will be printed) and true are valid children. They simply don’t render. Useful to conditionally render.
+```javascript
+<div>
+  {showHeader && <Header />}
+</div>
+```
+* Convert false, true, null, or undefined to string to print: `<div>{String(myVariable)}<div>`
+* Use `prop-types` can validate prop type
+
+# Callback Ref
+* When to Use Refs
+  1. Managing focus, text selection, or media playback.
+  2. Triggering imperative animations.
+  3. Integrating with third-party DOM libraries.
+* If the ref callback is defined as an inline function, it will get called twice during updates, first with null and then again with the DOM element.
+
